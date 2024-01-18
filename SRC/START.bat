@@ -1,0 +1,6 @@
+@echo off
+:restart
+echo Starting bot...
+node bot.js
+echo Bot has stopped. Restarting...
+goto restart
