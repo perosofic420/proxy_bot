@@ -8,15 +8,24 @@ This repository serves as both a backup and a template. Updates incorporating th
 
 ## Notes
 
-TNM-Bot is tailored for small to mid-sized servers (approximately 0-500 online members) and is optimized for use in a single server. It's designed for private, custom bots within a single server environment. Please note that this bot utilizes version 12.5.3 of `discord.js`, which is deprecated but chosen for its simplicity in not requiring intents. This version continues to function effectively, though it is an older package. The bot's current scale uses JSON files for data storage; larger-scale implementations may require a database and codebase modifications. Enjoy using the bot, and have fun!
+TNM-Bot is tailored for small to mid-sized servers (approximately 0-500 online members) and is optimized for use in a single server. It's designed for private, custom bots within a single server environment. Please note that this bot utilizes version 12.5.3 of `discord.js`, which is deprecated but chosen for its simplicity in not requiring intents. This version continues to function effectively, though it is an older package. The bot's current scale uses JSON files for data storage; larger-scale implementations may require a database and codebase modifications. Now, for whatever reason, if you need to secure `config.json` or any other file that holds case sensitive information then that's on you bro. God forbid your bot's token gets leaked, that's a shit show and a half; just reset the bot's token in the Discord Developer thing if shit hits the fan. Enjoy using the bot, and have fun!
 
 ## Features
 
 - **Ping Command**: Checks the bot's response time.
 - **Level Command**: Displays a user's current level and points.
-- **Leaderboard Command**: Shows the top users by level and points.
-- **YouTube Command**: Fetches and displays information about a specific YouTube channel.
-- **Help Command**: Lists all available commands.
+- **Leaderboard Command**: Showcases the top users by level and points.
+- **YouTube Command**: Retrieves and displays information about a specific YouTube channel.
+- **Help Command**: Provides a list of all available commands.
+- **Kick Command**: Removes a user from the server.
+- **Unkick Command**: Sends an invite back to a kicked user.
+- **Ban Command**: Prohibits a user from rejoining the server.
+- **Unban Command**: Allows a previously banned user to rejoin the server.
+- **Mute Command**: Temporarily or indefinitely mutes a user.
+- **Unmute Command**: Removes the mute from a user.
+- **Purge Command**: Deletes a specified number of messages or messages from a specific user.
+- **Welcome Messages**: Sends a greeting to members who join the server.
+- **Goodbye Messages**: Sends a farewell message when members leave the server.
 
 ## Installation
 
@@ -54,13 +63,23 @@ Configure the `config.json` file in the root directory:
 ```json
 {
     "token": "DISCORD_BOT_TOKEN_HERE",
-    "prefix": ","
+    "prefix": ",",
+    "muteRoleId": "MUTE_ROLE_ID_HERE",
+    "logChannelId": "LOG_CHANNEL_ID_HERE",
+    "welcomeChannelId": "DOOR_CHANNEL_ID_HERE",
+    "goodbyeChannelId": "DOOR_CHANNEL_ID_HERE"
 }
 ```
 
 Replace `DISCORD_BOT_TOKEN_HERE` with your Discord bot's token. [How to get a Discord bot token](https://discordjs.guide/preparations/setting-up-a-bot-application.html#your-token).
 
-For YouTube integration, in `getYoutubeChannelData.js` and `bot.js` (line 72), replace `API_KEY_HERE` and `YOUTUBE_CHANNEL_ID_HERE` with your YouTube Data API key and channel ID, respectively. [Getting a YouTube API key](https://developers.google.com/youtube/v3/getting-started).
+Replace `MUTE_ROLE_ID_HERE` with the role ID of your mute role. You'll need to create one and modify the permissions, I know it's a pain but if you want to mute then you gotta do it.
+
+Replace `DOOR_CHANNEL_ID_HERE` with the channel ID(s) of where you want the join/leave logs to go, I made them different from each other so both logs don't go to one channel.
+
+Replace `LOG_CHANNEL_ID_HERE` with the channel ID of where you want the logs to go. This bot will not log every little thing it does, it just makes the proper logs for commands that need it. You can gladly modify ANYTHING to your taste, run wild.
+
+For YouTube integration, in `getYoutubeChannelData.js` and `bot.js` (line 108), replace `API_KEY_HERE` and `YOUTUBE_CHANNEL_ID_HERE` with your YouTube Data API key and channel ID, respectively. [Getting a YouTube API key](https://developers.google.com/youtube/v3/getting-started).
 
 ### Running the Bot
 
@@ -74,13 +93,14 @@ The bot should now be operational in your Discord server. Test it by issuing com
 
 ## Usage
 
-```bash
-,help       # Display help for commands
-,ping       # Check bot's latency
-,level      # Show your level
-,board      # Show leaderboard
-,yt         # Display YouTube channel info
-```
+Utilize the command prefix `,` followed by the command name:
+
+- `,help` - Display command help.
+- `,ping` - Check bot's latency.
+- `,level` - Show your level.
+- `,board` - Display the leaderboard.
+- `,yt` - Show YouTube channel info.
+- `,kick`, `,unkick`, `,ban`, `,unban`, `,mute`, `,unmute`, `,purge` - Moderation commands.
 
 ## Contributing
 
@@ -106,3 +126,27 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 - **Discord**: `therealtnm`
 - **Email**: `sysadmin@tnm.lol`
+
+# Changelogs
+
+```
+V1.2.0
+
+-Updated README.md with new commands, info, and added changelogs instead of stupid ass commits
+-Added a custom domain to this repo, I might plan on doing some cool shit with it for the bot. https://discord.tnm.lol
+-Commands added: kick, unkick, ban, unban, mute, unmute, and purge.
+-Added welcome/leave logs.
+-Added more error handling
+-Centralized required IDs in config.json, you're welcome.
+-Optimized code base.
+```
+
+```
+V1.1.5
+
+-Uploaded and publicize the bot's SRC on Github.
+-Commands added: help, ping, level, board, and yt.
+-Refactored with modular programming.
+-Added a README.md file.
+-MIT open-source licensed
+```
