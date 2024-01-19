@@ -1,0 +1,15 @@
+{
+  "name": "proxymodz_bot",
+  "version": "1.2.0",
+  "description": "Custom self-hosted Discord bot, written in JavaScript, hosted by therealtnm on Discord with Node.js Made for proxydillon on Discord.",
+  "main": "bot.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "therealtnm",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "googleapis": "^130.0.0"
+  }
+}
