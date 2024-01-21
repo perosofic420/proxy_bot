@@ -1,6 +1,0 @@
-@echo off
-:restart
-echo Starting bot...
-node ../../Users/TNM/Desktop/EOS-Project/ProxyModz/Bot-ProxyModz/bot.js
-echo Bot has stopped. Restarting...
-goto restart
