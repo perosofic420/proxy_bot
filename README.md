@@ -12,20 +12,18 @@ TNM-Bot is tailored for small to mid-sized servers (approximately 0-500 online m
 
 ## Features
 
-- **Ping Command**: Checks the bot's response time.
-- **Level Command**: Displays a user's current level and points.
-- **Leaderboard Command**: Showcases the top users by level and points.
-- **YouTube Command**: Retrieves and displays information about a specific YouTube channel.
-- **Help Command**: Provides a list of all available commands.
-- **Kick Command**: Removes a user from the server.
-- **Unkick Command**: Sends an invite back to a kicked user.
-- **Ban Command**: Prohibits a user from rejoining the server.
-- **Unban Command**: Allows a previously banned user to rejoin the server.
-- **Mute Command**: Temporarily or indefinitely mutes a user.
-- **Unmute Command**: Removes the mute from a user.
-- **Purge Command**: Deletes a specified number of messages or messages from a specific user.
-- **Welcome Messages**: Sends a greeting to members who join the server.
-- **Goodbye Messages**: Sends a farewell message when members leave the server.
+- **Ping Command**: Checks the bot's latency.
+- **Level Command**: Shows a user's level and points.
+- **Leaderboard Command**: Displays top users by level and points.
+- **YouTube Command**: Fetches information about a specified YouTube channel.
+- **Cat Command**: Displays a random cat image.
+- **Help Command**: Lists all available commands and provides detailed usage for each.
+- **Kick/Unkick Commands**: Remove/add a user from/to the server.
+- **Ban/Unban Commands**: Prevent/allow a user from rejoining the server.
+- **Mute/Unmute Commands**: Temporarily or indefinitely silence a user.
+- **Purge Command**: Deletes a specified number of messages or specific user's messages.
+- **Welcome/Goodbye Messages**: Sends automated messages for joining/leaving members.
+- **Config Command**: Configures bot settings like mute role, log channel, API keys, etc.
 
 ## Installation
 
@@ -54,32 +52,23 @@ Install the necessary dependencies:
 npm install
 ```
 
-This command installs `discord.js`, `googleapis`, and other dependencies listed in `package.json`.
+This command installs `discord.js`, `googleapis`, and `axios` listed in `package.json`.
 
 ### Setup Configuration
 
-Configure the `config.json` file in the root directory:
+- When you run the bot for the first time, it'll ask you for a Discord bot token. Once you input the token into the CLI, it'll start the bot. Then you can use the `,config` command to set up the rest of the configuration. This way, there's no need to touch the codebase resulting in a better user experience. [How to get a Discord bot token](https://discordjs.guide/preparations/setting-up-a-bot-application.html#your-token).
 
-```json
-{
-    "token": "DISCORD_BOT_TOKEN_HERE",
-    "prefix": ",",
-    "muteRoleId": "MUTE_ROLE_ID_HERE",
-    "logChannelId": "LOG_CHANNEL_ID_HERE",
-    "welcomeChannelId": "DOOR_CHANNEL_ID_HERE",
-    "goodbyeChannelId": "DOOR_CHANNEL_ID_HERE"
-}
-```
+- Now for configuration, you can use the config command to modify the `config.json` file for the following: prefix, log channel, mute role, welcome/goodbye channel, YouTube API key and channel ID, and The Cat API key.
 
-Replace `DISCORD_BOT_TOKEN_HERE` with your Discord bot's token. [How to get a Discord bot token](https://discordjs.guide/preparations/setting-up-a-bot-application.html#your-token).
+- Input the command `,config muterole MUTE_ROLE_ID_HERE` with the role ID of your mute role. You'll need to create one and modify the permissions, I know it's a pain but if you want to mute then you gotta do it.
 
-Replace `MUTE_ROLE_ID_HERE` with the role ID of your mute role. You'll need to create one and modify the permissions, I know it's a pain but if you want to mute then you gotta do it.
+- Input the command `,config welcomechannel DOOR_CHANNEL_ID_HERE` or `,config goodbyechannel DOOR_CHANNEL_ID_HERE` with the channel ID(s) of where you want the join/leave logs to go, I made them different from each other so both logs don't go to one channel.
 
-Replace `DOOR_CHANNEL_ID_HERE` with the channel ID(s) of where you want the join/leave logs to go, I made them different from each other so both logs don't go to one channel.
+- Input the command `,config logchannel LOG_CHANNEL_ID_HERE` with the channel ID of where you want the logs to go. This bot will not log every little thing it does, it just makes the proper logs for commands that need it.
 
-Replace `LOG_CHANNEL_ID_HERE` with the channel ID of where you want the logs to go. This bot will not log every little thing it does, it just makes the proper logs for commands that need it. You can gladly modify ANYTHING to your taste, run wild.
+- For YouTube integration, input the command `,config youtubeapikey API_KEY_HERE` with a YouTube API key and use the command `,config youtubechannelid YOUTUBE_CHANNEL_ID_HERE` to fetch a channel's data. [Getting a YouTube API key](https://developers.google.com/youtube/v3/getting-started).
 
-For YouTube integration, in `getYoutubeChannelData.js` and `bot.js` (line 108), replace `API_KEY_HERE` and `YOUTUBE_CHANNEL_ID_HERE` with your YouTube Data API key and channel ID, respectively. [Getting a YouTube API key](https://developers.google.com/youtube/v3/getting-started).
+- Input the command `,config catapikey CAT_API_KEY_HERE` with your API key from TheCatAPI for the cat command. [Getting a Cat API key](https://thecatapi.com/signup).
 
 ### Running the Bot
 
@@ -95,12 +84,21 @@ The bot should now be operational in your Discord server. Test it by issuing com
 
 Utilize the command prefix `,` followed by the command name:
 
-- `,help` - Display command help.
-- `,ping` - Check bot's latency.
-- `,level` - Show your level.
-- `,board` - Display the leaderboard.
-- `,yt` - Show YouTube channel info.
-- `,kick`, `,unkick`, `,ban`, `,unban`, `,mute`, `,unmute`, `,purge` - Moderation commands.
+- `,help` - Display command help. Specific command details can be obtained by `,help [command]`.
+- `,ping` - Check the bot's latency.
+- `,level` - Show your level in the server's leveling system.
+- `,board` - Display the leaderboard of top users based on levels and points.
+- `,yt` - Show information about a specific YouTube channel.
+- `,cat` - Fetch and display a random cat image.
+- `,config` - Configure bot settings like prefixes and channel IDs (requires admin permissions).
+- Moderation Commands:
+  - `,kick @user [reason]` - Kicks a user from the server.
+  - `,unkick userID` - Invites a previously kicked user back to the server.
+  - `,ban @user [reason]` - Bans a user from the server.
+  - `,unban userID` - Unbans a user from the server.
+  - `,mute @user [duration]` - Mutes a user for a specified duration or indefinitely.
+  - `,unmute userID` - Unmutes a user.
+  - `,purge number` or `,purge @user number` - Deletes a specified number of messages or messages from a specific user.
 
 ## Contributing
 
@@ -130,9 +128,22 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 # Changelogs
 
 ```
+V1.2.5
+
+- Updated README.md with new commands, info, and added new changelogs instead of stupid ass commits.
+- Commands added: cat
+- Implemented the 'config' command for easy bot configuration. A rework of the configuration system.
+- Implemented the ability to change bot settings via commands.
+- Centralized everything that requires values in `config.json`
+- Added more error handling.
+- Optimized code base.
+- Enhanced the 'displayHelp' command for detailed command usage.
+```
+
+```
 V1.2.0
 
--Updated README.md with new commands, info, and added changelogs instead of stupid ass commits
+-Updated README.md with new commands, info, and added changelogs instead of stupid ass commits.
 -Added a custom domain to this repo, I might plan on doing some cool shit with it for the bot. https://discord.tnm.lol
 -Commands added: kick, unkick, ban, unban, mute, unmute, and purge.
 -Added welcome/leave logs.
