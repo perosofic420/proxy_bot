@@ -126,7 +126,7 @@ function handleCommands(message) {
             .setTitle('Your Level Information')
             .setDescription(`You are currently at level ${userLevelData.level} with ${userLevelData.points} points.`);
         message.channel.send(levelEmbed);
-    } else if (command === 'yt') {
+    } else if (command === 'yt') {//done
         getYoutubeChannelData(config.youtubeChannelId, message);
     } else if (command === 'board') {
         displayLeaderboard(client, message, levelsData);

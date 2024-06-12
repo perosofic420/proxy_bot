@@ -20,7 +20,7 @@ module.exports = {
         const userId = message.author.id;
         if (!levelsData[userId]) {
             const levelEmbed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
+                .setColor(client.colour)
                 .setTitle('Level Status')
                 .setDescription("You do not have any level data yet. Keep participating to start leveling up!");
             message.channel.send(levelEmbed);
@@ -28,7 +28,7 @@ module.exports = {
         }
         const userLevelData = levelsData[userId];
         const levelEmbed = new Discord.MessageEmbed()
-            .setColor('#0099ff')
+            .setColor(client.colour)
             .setTitle('Your Level Information')
             .setDescription(`You are currently at level ${userLevelData.level} with ${userLevelData.points} points.`);
         interaction.reply({ embeds: [levelEmbed] });
