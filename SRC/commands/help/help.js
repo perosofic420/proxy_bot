@@ -5,7 +5,7 @@ module.exports = {
         .setName('help')
         .setDescription('Display a list of commands.'),
     async execute(interaction, client) {
-		var cmdList = "";
+		let cmdList = "";
         for (cmd of client.commandArray) {
 			cmdList += `**/${cmd.name}`;
 			if (cmd.options) {
@@ -16,7 +16,7 @@ module.exports = {
 			cmdList += `** - ${cmd.description}\n`;
         }
 
-        var _embed = new EmbedBuilder();
+        let _embed = new EmbedBuilder();
         _embed.setColor(client.colour);
         _embed.setTimestamp();
 		_embed.setTitle("Bot | Help");

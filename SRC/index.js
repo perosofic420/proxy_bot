@@ -9,7 +9,7 @@ client.commands = new Collection();
 client.commandArray = [];
 client.messageCommands = new Collection();
 client.messageCommandArray = [];
-client.colour = 0xFF0000;
+client.colour = 0x0099ff;
 
 const functionFolders = fs.readdirSync(`./functions`);
 for (const folder of functionFolders) {
