@@ -128,7 +128,7 @@ function handleCommands(message) {
         message.channel.send(levelEmbed);
     } else if (command === 'yt') {//done
         getYoutubeChannelData(config.youtubeChannelId, message);
-    } else if (command === 'board') {
+    } else if (command === 'board') {//done
         displayLeaderboard(client, message, levelsData);
     }
      else if (command === 'ban') {
