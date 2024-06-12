@@ -35,8 +35,9 @@ if (!config.token || config.token === "YOUR_BOT_TOKEN_HERE") {
     client.login(config.token);
 }
 
-const levelsFilePath = path.join(__dirname, './data/levels.json');
+const levelsFilePath = path.join(__dirname, './data/levels.json');//done
 
+//need to do
 const mutedFilePath = path.join(__dirname, 'data', 'muted.json');
 let mutedUsers = {};
 
@@ -44,6 +45,7 @@ if (fs.existsSync(mutedFilePath)) {
     mutedUsers = JSON.parse(fs.readFileSync(mutedFilePath, 'utf8'));
 }
 
+//done
 let levelsData = {};
 if (fs.existsSync(levelsFilePath)) {
     const fileContent = fs.readFileSync(levelsFilePath, 'utf8');
@@ -57,21 +59,22 @@ if (fs.existsSync(levelsFilePath)) {
     }
 }
 
+//client/ready.js :)
 client.once('ready', () => {
     console.log('Bot is ready and online!');
 });
 
 client.on('message', message => {
     if (message.author.bot) return;
-    
+    //replaced this stuff with interactions
     if (message.content.startsWith(config.prefix)) {
         handleCommands(message);
     } else {
-        handleLevelingSystem(message, levelsData, levelsFilePath);
+        handleLevelingSystem(message, levelsData, levelsFilePath);//added same thing
     }
 });
 
-client.on('guildMemberAdd', member => {
+client.on('guildMemberAdd', member => {//done
     const channel = member.guild.channels.cache.get(config.welcomeChannelId);
     if (!channel) return;
     const welcomeEmbed = new Discord.MessageEmbed()
@@ -82,7 +85,7 @@ client.on('guildMemberAdd', member => {
     channel.send(welcomeEmbed);
 });
 
-client.on('guildMemberRemove', member => {
+client.on('guildMemberRemove', member => {//done
     const channel = member.guild.channels.cache.get(config.goodbyeChannelId);
     if (!channel) return;
     const goodbyeEmbed = new Discord.MessageEmbed()
@@ -97,16 +100,16 @@ function handleCommands(message) {
     const args = message.content.slice(config.prefix.length).trim().split(/ +/);
     const command = args.shift().toLowerCase();
 
-    if (command === 'help') {
+    if (command === 'help') {//dont need
         displayHelp(message, args);
-    } else if (command === 'ping') {
+    } else if (command === 'ping') {//done
         const timeTaken = Date.now() - message.createdTimestamp;
         const pingEmbed = new Discord.MessageEmbed()
             .setColor('#0099ff')
             .setTitle('Ping Response')
             .setDescription(`Pong! This message had a latency of ${timeTaken}ms.`);
         message.channel.send(pingEmbed);
-    } else if (command === 'level') {
+    } else if (command === 'level') {//done
         const userId = message.author.id;
         if (!levelsData[userId]) {
             const levelEmbed = new Discord.MessageEmbed()
