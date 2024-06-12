@@ -1,0 +1,16 @@
+{
+  "name": "tnm-bot",
+  "version": "1.2.5",
+  "description": "Custom self-hosted Discord bot, written in JavaScript, hosted by therealtnm on Discord with Node.js Made for proxydillon on Discord.",
+  "main": "bot.js",
+  "scripts": {
+    "test": ""
+  },
+  "author": "therealtnm",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.5",
+    "discord.js": "^12.5.3",
+    "googleapis": "^130.0.0"
+  }
+}

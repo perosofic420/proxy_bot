@@ -1,16 +1,16 @@
 {
-  "name": "tnm-bot",
-  "version": "1.2.5",
-  "description": "Custom self-hosted Discord bot, written in JavaScript, hosted by therealtnm on Discord with Node.js Made for proxydillon on Discord.",
-  "main": "bot.js",
+  "name": "discord_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "therealtnm",
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "axios": "^1.6.5",
-    "discord.js": "^12.5.3",
-    "googleapis": "^130.0.0"
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.4.5"
   }
 }
