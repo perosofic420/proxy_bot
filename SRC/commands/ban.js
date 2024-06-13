@@ -10,7 +10,7 @@ module.exports = {
             return interaction.reply("You don't have permission to ban members.");
         }
     
-        const userToBan = interaction.message.mentions.users.first();
+        const userToBan = interaction.options.getMentionable('mention');
         if (!userToBan) {
             return interaction.reply("Please mention a user to ban.");
         }

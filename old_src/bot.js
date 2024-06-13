@@ -137,16 +137,16 @@ function handleCommands(message) {
      else if (command === 'kick') {//done
         kick(message, args);
     }
-     else if (command === 'mute') {
+     else if (command === 'mute') {//done
         mute(message, args);
     }
-     else if (command === 'unmute') {
+     else if (command === 'unmute') {//done
         unmute(message, args);
     }
-    else if (command === 'unban') {
+    else if (command === 'unban') {//done
         unban(message, args);
     }
-    else if (command === 'unkick') {
+    else if (command === 'unkick') {//done
         unkick(message, args);
     }
     else if (command === 'purge') {

@@ -10,7 +10,7 @@ module.exports = {
             return interaction.reply("You don't have permission to kick members.");
         }
     
-        const userToKick = interaction.mentions.users.first();
+        const userToKick = interaction.options.getMentionable('mention');
         if (!userToKick) {
             return interaction.reply("Please mention a user to kick.");
         }
