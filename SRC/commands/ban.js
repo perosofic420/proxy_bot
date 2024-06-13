@@ -2,9 +2,9 @@ const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('help')
-        .setDescription('Display a list of commands.')
-        .addMentionableOption(option => option.setName('@user').setDescription('Mention someone')),
+        .setName('ban')
+        .setDescription('Ban someone from the server.')
+        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to ban')),
     async execute(interaction, client) {
         if (!interaction.user.hasPermission('BAN_MEMBERS')) {
             return interaction.reply("You don't have permission to ban members.");

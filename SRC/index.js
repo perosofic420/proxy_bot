@@ -20,5 +20,4 @@ for (const folder of functionFolders) {
 
 client.handleEvents();
 client.handleCommands();
-client.handleMessageCommands();
 client.login(DISCORD_TOKEN);

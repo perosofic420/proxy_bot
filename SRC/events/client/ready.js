@@ -7,9 +7,8 @@ module.exports = {
         console.log(`Discord bot started, logged in as ${client.user.tag}`);
         client.user.setPresence({ 
             activities: [{ 
-                name: 'over unixx.shop', 
+                name: 'some haxor stuff', 
                 type: ActivityType.Watching, 
-                url: 'https://unixx.shop' 
             }], 
             status: 'online' 
         });
