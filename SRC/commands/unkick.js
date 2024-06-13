@@ -4,7 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('unkick')
         .setDescription('Send someone an invite back to the server')
-        .addIntegerOption(option => option.setName('id').setDescription('Give the ID of someone to unban')),
+        .addIntegerOption(option => option.setName('id').setDescription('Give the ID of someone to unban').setRequired(true)),
     async execute(interaction, client) {
         if (!interaction.member.hasPermission('KICK_MEMBERS')) {
             return interaction.reply("You don't have permission to send invite links.");

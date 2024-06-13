@@ -4,7 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('unban')
         .setDescription('Unban someone from the server.')
-        .addIntegerOption(option => option.setName('id').setDescription('Give the ID of someone to unban')),
+        .addIntegerOption(option => option.setName('id').setDescription('Specify the ID of someone to unban').setRequired(true)),
     async execute(interaction, client) {
         if (!interaction.user.hasPermission('BAN_MEMBERS')) {
             return interaction.reply("You don't have permission to unban members.");

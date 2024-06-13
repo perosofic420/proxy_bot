@@ -4,7 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('unmute')
         .setDescription('Unmute someone in the server.')
-        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to unmute')),
+        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to unmute').setRequired(true)),
     async execute(interaction, client) {
         if (!interaction.user.permissions.has(PermissionFlagsBits.ModerateMembers)) {
             return interaction.reply("You don't have permission to unmute members.");

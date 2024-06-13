@@ -4,7 +4,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('kick')
         .setDescription('Kick someone from the server.')
-        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to kick')),
+        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to kick').setRequired(true)),
     async execute(interaction, client) {
         if (!interaction.user.hasPermission('KICK_MEMBERS')) {
             return interaction.reply("You don't have permission to kick members.");

@@ -11,7 +11,7 @@ module.exports = {
     data: new SlashCommandBuilder()
         .setName('mute')
         .setDescription('Mute someone in the server.')
-        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to mute')),
+        .addMentionableOption(option => option.setName('mention').setDescription('Mention someone to mute').setRequired(true)),
     async execute(interaction, client) {
         const mutedFilePath = path.join(__dirname, '../data/muted.json');
         let mutedUsers = {};
