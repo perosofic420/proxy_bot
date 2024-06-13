@@ -131,10 +131,10 @@ function handleCommands(message) {
     } else if (command === 'board') {//done
         displayLeaderboard(client, message, levelsData);
     }
-     else if (command === 'ban') {
+     else if (command === 'ban') {//done, hopefully works
         ban(message, args);
     }
-     else if (command === 'kick') {
+     else if (command === 'kick') {//done
         kick(message, args);
     }
      else if (command === 'mute') {
