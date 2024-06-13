@@ -149,10 +149,10 @@ function handleCommands(message) {
     else if (command === 'unkick') {//done
         unkick(message, args);
     }
-    else if (command === 'purge') {
+    else if (command === 'purge') {//purge
         purge(message, args);
     }
-    else if (command === 'cat') {
+    else if (command === 'cat') {//done
         cat(message, args);
     }
     else if (command === 'config') {

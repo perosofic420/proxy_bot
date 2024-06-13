@@ -61,7 +61,7 @@ module.exports = {
         const logChannel = message.guild.channels.cache.get(config.logChannelId);
         if (logChannel) {
             const logEmbed = new Discord.MessageEmbed()
-                .setColor('#0099ff')
+                .setColor(client.colour)
                 .setTitle('Messages Purged')
                 .setDescription(`${amount} messages ${isUserSpecified ? `from ${user.tag}` : ''} were purged by ${message.author.tag}`)
                 .setTimestamp();
